@@ -19,12 +19,15 @@ public interface BlockExplodeCallback {
 
     /**
      * 方块爆炸事件
+     * <dl>
+     *     <dt>blockState</dt>
+     *     <dd>爆炸方块 blockState 可通过 {@link World#getBlockState(BlockPos)} 获得</dd>
+     * </dl>
      *
      * @param posList        受波及的非空气方块位置列表
      * @param blockStateList 受波及的非空气方块列表
      * @param world          爆炸所在的世界
      * @param pos            爆炸位置
-     * 爆炸方块可由 world.getBlockState 获得
      */
     void interact(@NotNull List<BlockPos> posList, @NotNull List<BlockState> blockStateList,
                   @NotNull World world, @NotNull BlockPos pos);

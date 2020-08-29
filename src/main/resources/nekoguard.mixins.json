@@ -69,7 +69,8 @@
     "event.entity.vehicle.damage.MixinBoatEntity",
     "event.entity.vehicle.destroy.MixinBoatEntity",
     "util.entity.MixinEntity",
-    "util.entity.MixinLivingEntity"
+    "util.entity.MixinLivingEntity",
+    "util.world.explosion.MixinExplosion"
   ],
   "client": [
     ""
