@@ -3,28 +3,27 @@ package cn.apisium.nekoguard.fabric.callback;
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public interface EntityDeathCallback {
     Event<EntityDeathCallback> EVENT = EventFactory.createArrayBacked(EntityDeathCallback.class,
-            (listeners) -> (entity, itemStacks, world, pos) -> {
+            (listeners) -> (entity) -> {
                 for (EntityDeathCallback event : listeners) {
-                    event.interact(entity, itemStacks, world, pos);
+                    event.interact(entity);
                 }
             });
 
     /**
      * 实体死亡事件
+     * <dl>
+     *     <dt>world</dt>
+     *     <dd>world 可通过 {@link Entity#world} 获得</dd>
+     *     <dt>pos</dt>
+     *     <dd>实体位置 pos 可通过 {@link Entity#getBlockPos()} 和 {@link Entity#getPos()} 获取</dd>
+     * </dl>
+     *
      * @param entity 实体
-     * @param itemStacks 掉落方块
-     * @param world 世界
-     * @param pos 位置
      */
-    void interact(@NotNull Entity entity, @NotNull List<ItemStack> itemStacks,@NotNull  World world, @NotNull BlockPos pos);
+
+    void interact(@NotNull Entity entity);
 }
